@@ -1240,6 +1240,17 @@ footer {
   .status-pill, .hero-foot, .proof-strip, .reveal { opacity: 1; transform: none; filter: none; }
   html { scroll-behavior: auto; }
 }
+/* Studio masthead and featured client photography */
+.hero{min-height:0;padding:clamp(110px,12vw,176px) 0 clamp(55px,7vw,102px)}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1fr 1.12fr;gap:clamp(32px,6vw,86px);align-items:center}
+.studio-loc{display:flex;align-items:center;gap:12px;font:600 12px var(--sans);letter-spacing:.06em;margin:0 0 31px}.studio-loc span:last-child{color:var(--mute);border-left:1px solid var(--line-strong);padding-left:12px}
+.studio-intro h1{font-size:clamp(70px,7.7vw,118px);line-height:.87;letter-spacing:-.062em;margin:0 0 30px}.studio-intro .sub{max-width:35ch;color:var(--ink-soft)}.studio-intro .hero-actions{margin-top:26px;justify-content:flex-start}
+#dots{opacity:.36}.studio-feature{pointer-events:auto;align-self:center;min-width:0}
+#feature-link{position:relative;display:block;isolation:isolate;overflow:hidden;border-radius:4px;background:#241b17;color:white}
+#feature-photo{width:100%;height:auto;aspect-ratio:1.23;object-fit:cover;display:block;transition:transform .6s}#feature-link:hover img{transform:scale(1.025)}
+.feature-caption{position:absolute;inset:auto 0 0;padding:50px 24px 22px;background:linear-gradient(transparent,rgba(12,9,7,.88))}.feature-caption strong{display:block;font:500 clamp(28px,3.5vw,47px)/1.07 var(--serif);letter-spacing:-.035em}.feature-caption span:first-child{font:600 12px var(--sans);letter-spacing:.06em}.visit-disc{position:absolute;right:21px;bottom:22px;border:1px solid #fff8;border-radius:50%;width:36px;height:36px;text-align:center;line-height:33px}
+.feature-picks{display:flex;gap:0}.feature-picks button{flex:1;border:0;border-bottom:2px solid var(--line);background:none;color:var(--mute);padding:13px 2px;font:600 13px var(--sans);cursor:pointer}.feature-picks button[aria-pressed=true]{border-color:var(--acc);color:var(--ink)}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr;gap:30px}.studio-loc{margin-bottom:22px}.studio-intro h1{font-size:clamp(70px,16vw,95px)}#feature-photo{aspect-ratio:1.7}.hero{padding:100px 0 40px}.header-tools{gap:4px}}
 </style>
 </head>
 <body>
@@ -1277,44 +1288,18 @@ footer {
     <div class="hero-aurora" aria-hidden="true"></div>
     <canvas id="dots" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="status-pill">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>Sauce Studio · Toronto · Open for select builds</span>
-        <span class="status-time" id="toronto-time">Toronto</span>
+      <div class="studio-intro">
+        <p class="studio-loc"><span class="status-dot"></span> Independent web studio <span id="toronto-time">Toronto</span></p>
+        <h1>Built for<br><em>business.</em></h1>
+        <p class="sub">We design websites around what your customers came to do. Browse a collection, book a class, order their favourite burger.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#contact">Start a project</a><a class="btn" href="#work">Explore our work</a></div>
       </div>
-      <span class="hero-hint">Move or click to ripple the field</span>
-
-      <h1 aria-label="Websites built to turn visitors into customers.">
-        <span class="l"><span>Websites built</span></span>
-        <span class="l"><span>to turn <em>visitors</em></span></span>
-        <span class="l"><span>into customers.</span></span>
-      </h1>
-
-      <div class="hero-foot">
-        <p class="sub">Websites, storefronts, and custom web apps designed and built at Sauce Studio in Toronto.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary magnetic" href="#work">Explore the work &darr;</a>
-          <a class="btn magnetic" href="#contact">Start a project &rarr;</a>
-        </div>
-      </div>
-
-      <div class="proof-strip" aria-label="Portfolio highlights">
-        <div class="proof-item">
-          <strong>10+</strong>
-          <span>Shipped business sites</span>
-        </div>
-        <div class="proof-item">
-          <strong>5</strong>
-          <span>Original web apps</span>
-        </div>
-        <div class="proof-item">
-          <strong>Full-stack</strong>
-          <span>Sites, storefronts &amp; web apps</span>
-        </div>
-        <div class="proof-item">
-          <strong>Hand-tuned</strong>
-          <span>Zero templates · phone-tested</span>
-        </div>
+      <div class="studio-feature">
+        <a id="feature-link" href="https://badsterburgers.in" target="_blank" rel="noopener">
+          <img id="feature-photo" src="assets/feature-badster.webp" alt="Badster’s vegetarian burger" fetchpriority="high">
+          <div class="feature-caption"><span id="feature-type">Menu &amp; ordering</span><strong id="feature-name">Badster Burgers</strong><span class="visit-disc" aria-hidden="true">↗</span></div>
+        </a>
+        <div class="feature-picks" role="group" aria-label="Featured client"><button type="button" aria-pressed="true" data-client="badster">Badster</button><button type="button" aria-pressed="false" data-client="hari">Hari Handloom</button><button type="button" aria-pressed="false" data-client="shraddha">Shraddha Yoga</button></div>
       </div>
     </div>
   </div>
@@ -1323,10 +1308,10 @@ footer {
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <div class="sec-kicker">01 · Client Work</div>
+          <div class="sec-kicker">Client work</div>
           <h2>Selected websites.</h2>
         </div>
-        <p class="sec-note">Custom-domain launches first, followed by active previews. Open any row to inspect.</p>
+        <p class="sec-note">Explore the brief, the design and the live website for each project.</p>
       </div>
 
       <div class="filter-bar" role="group" aria-label="Filter projects by industry">
@@ -1760,12 +1745,12 @@ footer {
       <div>
         <div class="sec-kicker">04 · Contact</div>
         <p class="contact-title">Start a project.</p>
-        <p class="contact-sub">Select what you're building on the right to draft a quick note, or email us directly. Based in Toronto, working with businesses anywhere.</p>
+        <p class="contact-sub">Choose your project details to draft an email, or write to us directly. Based in Toronto, working with businesses anywhere.</p>
         <div class="links">
           <a href="mailto:hellosaucestudio@gmail.com">hellosaucestudio@gmail.com</a>
           <a href="mailto:loganxaaryan@gmail.com">loganxaaryan@gmail.com</a>
           <a href="https://x.com/loganxbtc" target="_blank" rel="noopener noreferrer">Message on X &#8599;</a>
-          <a href="https://loganxaaryan-a11y.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Studio Archive &#8599;</a>
+          <a href="https://loganxaaryan-a11y.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Logan’s personal portfolio &#8599;</a>
         </div>
       </div>
 
@@ -2375,6 +2360,23 @@ footer {
     document.body.removeChild(ta);
   }
 })();
+</script>
+<script>
+const featuredClients = {
+  badster: ['Badster Burgers','Menu & ordering','https://badsterburgers.in','Badster’s vegetarian burger'],
+  hari: ['Hari Handloom House','Wholesale catalogue','https://harihandloomhouse.in','A made bed from the handloom collection'],
+  shraddha: ['Shraddha Yoga Space','Classes & trial bookings','https://shraddhayoga.space','Yoga class in the studio']
+};
+document.querySelectorAll('[data-client]').forEach(button => button.addEventListener('click', () => {
+  const key = button.dataset.client;
+  const [name,type,url,alt] = featuredClients[key];
+  const photo = document.getElementById('feature-photo');
+  photo.src = 'assets/feature-' + key + '.webp'; photo.alt = alt;
+  document.getElementById('feature-name').textContent = name;
+  document.getElementById('feature-type').textContent = type;
+  document.getElementById('feature-link').href = url;
+  document.querySelectorAll('[data-client]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+}));
 </script>
 </body>
 </html>
