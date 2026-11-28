@@ -1254,6 +1254,8 @@ footer {
 #dots{opacity:.67;mask-image:linear-gradient(95deg,transparent,#000 78%)}
 #work{padding-top:clamp(38px,5.5vw,76px)}
 @media(max-width:680px){.studio-baseline{align-items:flex-start;flex-direction:column;gap:14px}.studio-loc{font-size:11px}.header-tools{gap:4px}.hero{padding-top:100px}.studio-intro h1{font-size:clamp(60px,16vw,105px)}}
+.cookbook-cover { display: block; align-self: center; overflow: hidden; border-radius: 14px; background: #fbf8f1; aspect-ratio: 1200 / 630; }
+.cookbook-cover img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -1311,8 +1313,8 @@ footer {
       </div>
 
       <div class="filter-bar" role="group" aria-label="Filter projects by industry">
-        <button type="button" class="filter-pill active" data-filter="all">All <span class="cnt">8</span></button>
-        <button type="button" class="filter-pill" data-filter="food-retail">Food &amp; Retail <span class="cnt">3</span></button>
+        <button type="button" class="filter-pill active" data-filter="all">All <span class="cnt">9</span></button>
+        <button type="button" class="filter-pill" data-filter="food-retail">Food &amp; Retail <span class="cnt">4</span></button>
         <button type="button" class="filter-pill" data-filter="wellness-care">Wellness &amp; Care <span class="cnt">2</span></button>
         <button type="button" class="filter-pill" data-filter="services-booking">Local Services &amp; Booking <span class="cnt">3</span></button>
       </div>
@@ -1396,9 +1398,27 @@ footer {
           </div></div></div>
         </div>
 
+        <div class="row" data-cat="food-retail" id="little-cookbook">
+          <button type="button" class="row-trigger" aria-expanded="false" aria-controls="cookbook-panel">
+            <span class="idx">03</span>
+            <span class="t">Little Cookbook by Zeel</span>
+            <span class="k">Vegetarian recipes &amp; meal planning</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </button>
+          <div class="panel" id="cookbook-panel"><div><div class="body">
+            <a class="cookbook-cover" href="https://littlecookbook.food/" target="_blank" rel="noopener noreferrer" aria-label="Open Little Cookbook by Zeel">
+              <template><img src="https://littlecookbook.food/assets/share/R072.jpg" width="1200" height="630" alt=""></template>
+            </a>
+            <div class="txt">
+              <p>Cook Kutchi dabeli from Zeel’s reel, save the recipe, and build a shopping list for the week.</p>
+              <a class="visit" href="https://littlecookbook.food/" target="_blank" rel="noopener noreferrer">Open the cookbook &#8599;</a>
+            </div>
+          </div></div></div>
+        </div>
+
         <div class="row" data-cat="wellness-care">
           <button type="button" class="row-trigger" aria-expanded="false">
-            <span class="idx">03</span>
+            <span class="idx">04</span>
             <span class="t">Shraddha Yoga Space</span>
             <span class="k">Wellness studio · Schedules &amp; trial booking</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -1436,7 +1456,7 @@ footer {
 
         <div class="row" data-cat="wellness-care">
           <button type="button" class="row-trigger" aria-expanded="false">
-            <span class="idx">04</span>
+            <span class="idx">05</span>
             <span class="t">Denyse Clara Cares</span>
             <span class="k">Professional care &amp; advocacy · Toronto</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -1473,7 +1493,7 @@ footer {
 
         <div class="row" data-cat="services-booking">
           <button type="button" class="row-trigger" aria-expanded="false">
-            <span class="idx">05</span>
+            <span class="idx">06</span>
             <span class="t">The Tech Source Hub</span>
             <span class="k">Phone shop &amp; repair · Danforth Ave, Toronto</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -1511,7 +1531,7 @@ footer {
 
         <div class="row" data-cat="food-retail">
           <button type="button" class="row-trigger" aria-expanded="false">
-            <span class="idx">06</span>
+            <span class="idx">07</span>
             <span class="t">Unique Ideas</span>
             <span class="k">Handcrafted resin art &amp; bespoke gifts</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -1549,7 +1569,7 @@ footer {
 
         <div class="row" data-cat="services-booking">
           <button type="button" class="row-trigger" aria-expanded="false">
-            <span class="idx">07</span>
+            <span class="idx">08</span>
             <span class="t">Vantage</span>
             <span class="k">Chauffeur &amp; limousine booking · Vancouver</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -1587,7 +1607,7 @@ footer {
 
         <div class="row" data-cat="services-booking">
           <button type="button" class="row-trigger" aria-expanded="false">
-            <span class="idx">08</span>
+            <span class="idx">09</span>
             <span class="t">A.S. Pool &amp; Snooker Club</span>
             <span class="k">13-branch recreation hub &amp; club locator</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -2168,6 +2188,8 @@ footer {
   // Accordion & Category Filters
   var rows = [].slice.call(document.querySelectorAll('#work-rows .row'));
   function setOpenRow(targetRow) {
+    var cover = targetRow && targetRow.querySelector('.cookbook-cover template');
+    if (cover) cover.replaceWith(cover.content.cloneNode(true));
     rows.forEach(function (r) {
       var isTarget = r === targetRow;
       r.classList.toggle('open', isTarget);
