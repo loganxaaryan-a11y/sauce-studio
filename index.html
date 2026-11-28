@@ -633,6 +633,13 @@ h2 {
   font-family: var(--serif);
 }
 .p-hari .plate-title em { color: #8c6239; font-style: italic; }
+.p-cookbook {
+  background: linear-gradient(145deg, #fbf8f1, #f1e3cd);
+  color: #553426;
+  font-family: var(--serif);
+  text-decoration: none;
+}
+.p-cookbook .plate-title em { color: #974423; }
 .p-badster {
   background: radial-gradient(circle at 80% 20%, rgba(245, 185, 59, .18), transparent 48%),
               linear-gradient(145deg, #0b111e 0%, #161d2b 100%);
@@ -1254,8 +1261,6 @@ footer {
 #dots{opacity:.67;mask-image:linear-gradient(95deg,transparent,#000 78%)}
 #work{padding-top:clamp(38px,5.5vw,76px)}
 @media(max-width:680px){.studio-baseline{align-items:flex-start;flex-direction:column;gap:14px}.studio-loc{font-size:11px}.header-tools{gap:4px}.hero{padding-top:100px}.studio-intro h1{font-size:clamp(60px,16vw,105px)}}
-.cookbook-cover { display: block; align-self: center; overflow: hidden; border-radius: 14px; background: #fbf8f1; aspect-ratio: 1200 / 630; }
-.cookbook-cover img { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -1406,8 +1411,14 @@ footer {
             <span class="chev" aria-hidden="true">+</span>
           </button>
           <div class="panel" id="cookbook-panel"><div><div class="body">
-            <a class="cookbook-cover" href="https://littlecookbook.food/" target="_blank" rel="noopener noreferrer" aria-label="Open Little Cook Book">
-              <template><img src="https://littlecookbook.food/assets/share/R072.jpg" width="1200" height="630" alt=""></template>
+            <a class="plate p-cookbook tilt-plate" href="https://littlecookbook.food/" target="_blank" rel="noopener noreferrer" aria-label="Visit Little Cook Book">
+              <div class="plate-bar"><span class="plate-dots" aria-hidden="true"><span></span><span></span><span></span></span><span>littlecookbook.food</span></div>
+              <div class="plate-main">
+                <div class="plate-eyebrow">Street food · About 35 min</div>
+                <p class="plate-title">Kutchi <em>dabeli.</em></p>
+                <div class="plate-chips"><span class="plate-chip">Potato masala</span><span class="plate-chip">Spiced peanuts</span><span class="plate-chip">Chutneys</span></div>
+              </div>
+              <div class="plate-foot"><span>Little Cook Book</span><span>Visit site &#8599;</span></div>
             </a>
             <div class="txt">
               <p>Cook Kutchi dabeli step by step, save the recipe, and build a shopping list for the week.</p>
@@ -2188,8 +2199,6 @@ footer {
   // Accordion & Category Filters
   var rows = [].slice.call(document.querySelectorAll('#work-rows .row'));
   function setOpenRow(targetRow) {
-    var cover = targetRow && targetRow.querySelector('.cookbook-cover template');
-    if (cover) cover.replaceWith(cover.content.cloneNode(true));
     rows.forEach(function (r) {
       var isTarget = r === targetRow;
       r.classList.toggle('open', isTarget);
